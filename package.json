@@ -21,6 +21,8 @@
     "@heroui/switch": "2.2.19",
     "@heroui/system": "2.4.17",
     "@heroui/theme": "2.4.17",
+    "@prisma/client": "^6.10.1",
+    "@prisma/extension-accelerate": "^2.0.1",
     "@react-aria/ssr": "3.9.9",
     "@react-aria/visually-hidden": "3.8.24",
     "clsx": "2.1.1",
@@ -57,8 +59,10 @@
     "globals": "16.0.0",
     "postcss": "8.5.3",
     "prettier": "3.5.3",
+    "prisma": "^6.10.1",
     "tailwind-variants": "0.3.0",
     "tailwindcss": "3.4.16",
+    "tsx": "^4.20.3",
     "typescript": "5.6.3"
   }
 }
