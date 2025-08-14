@@ -104,7 +104,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/ialexss/Documents/MDG2/Simulacros/practica-4-informe/front/generated/prisma",
+      "value": "/Users/ialexss/Documents/MDG2/Simulacros/practica-8/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -118,11 +118,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/ialexss/Documents/MDG2/Simulacros/practica-4-informe/front/prisma/schema.prisma",
+    "sourceFilePath": "/Users/ialexss/Documents/MDG2/Simulacros/practica-8/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",
@@ -132,7 +132,7 @@ const config = {
     "db"
   ],
   "activeProvider": "sqlite",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
