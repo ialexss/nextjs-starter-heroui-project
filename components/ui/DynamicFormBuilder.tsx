@@ -6,7 +6,9 @@ export type BaseField = {
 	label: string;
 	type: "text" | "email" | "number" | "date" | "select";
 	required?: boolean;
-	options?: string[]; // Para select
+	// Para select: puede ser un array de strings (valor == label)
+	// o un array de objetos { label, value } cuando se requiere un value distinto al label
+	options?: Array<string | { label: string; value: string }>;
 };
 
 export type ArrayField = {
@@ -53,11 +55,26 @@ export const DynamicFormBuilder = ({ schema, onSubmit }: Props) => {
 							})}
 						>
 							<option value="">Seleccione una opción</option>
-							{field.options?.map((opt) => (
-								<option key={opt} value={opt}>
-									{opt}
-								</option>
-							))}
+							{field.options?.map((opt, i) => {
+								if (typeof opt === "string") {
+									return (
+										<option
+											key={`${fieldName}-${i}-${opt}`}
+											value={opt}
+										>
+											{opt}
+										</option>
+									);
+								}
+								return (
+									<option
+										key={`${fieldName}-${i}-${opt.value}`}
+										value={opt.value}
+									>
+										{opt.label}
+									</option>
+								);
+							})}
 						</select>
 					</div>
 				);
@@ -90,30 +107,33 @@ export const DynamicFormBuilder = ({ schema, onSubmit }: Props) => {
 				<label className="block text-sm font-semibold text-gray-800 dark:text-gray-100">
 					{field.label}
 				</label>
-				{fields.map((item, index) => (
-					<div
-						key={item.id}
-						className="rounded-lg border border-gray-200 dark:border-gray-700 p-4 mb-4 bg-white dark:bg-gray-900 space-y-3"
-					>
-						{field.fields.map((subField) => (
-							<div key={subField.name}>
-								{renderBaseField(
-									subField,
-									`${field.name}.${index}`
-								)}
+				<div className="flex flex-wrap gap-2">
+					{fields.map((item, index) => (
+						<div
+							key={item.id}
+							className="rounded-lg border border-gray-200 dark:border-gray-700 p-4 mb-4 bg-white dark:bg-gray-900 space-y-3 min-w-sm"
+						>
+							{field.fields.map((subField) => (
+								<div key={subField.name}>
+									{renderBaseField(
+										subField,
+										`${field.name}.${index}`
+									)}
+								</div>
+							))}
+							<div className="flex justify-end">
+								<button
+									type="button"
+									className="inline-flex items-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+									onClick={() => remove(index)}
+								>
+									Eliminar
+								</button>
 							</div>
-						))}
-						<div className="flex justify-end">
-							<button
-								type="button"
-								className="inline-flex items-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
-								onClick={() => remove(index)}
-							>
-								Eliminar
-							</button>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
+
 				<button
 					type="button"
 					className="inline-flex items-center rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -139,7 +159,7 @@ export const DynamicFormBuilder = ({ schema, onSubmit }: Props) => {
 	return (
 		<form
 			onSubmit={handleSubmit(handleFormSubmit)}
-			className="w-full max-w-3xl mx-auto space-y-6"
+			className="w-full  mx-auto space-y-6"
 		>
 			{schema.fields.map((field) => (
 				<div key={field.name} className="mb-4">

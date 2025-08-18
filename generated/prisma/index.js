@@ -105,7 +105,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/ialexss/Documents/MDG2/Simulacros/practica-8/generated/prisma",
+      "value": "/Users/ialexss/Documents/MDG2/Simulacros/practica-10/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -119,7 +119,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/ialexss/Documents/MDG2/Simulacros/practica-8/prisma/schema.prisma",
+    "sourceFilePath": "/Users/ialexss/Documents/MDG2/Simulacros/practica-10/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
