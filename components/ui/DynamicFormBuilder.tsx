@@ -4,7 +4,7 @@ import { useForm, useFieldArray, SubmitHandler } from "react-hook-form";
 export type BaseField = {
 	name: string;
 	label: string;
-	type: "text" | "email" | "number" | "date" | "select";
+	type: "text" | "email" | "number" | "date" | "datetime-local" | "select";
 	required?: boolean;
 	// Para select: puede ser un array de strings (valor == label)
 	// o un array de objetos { label, value } cuando se requiere un value distinto al label
