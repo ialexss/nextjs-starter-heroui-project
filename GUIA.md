@@ -348,6 +348,41 @@ return (
 
 ---
 
+### MyMap
+
+Mapa interactivo basado en `pigeon-maps`. Soporta dos modos.
+
+**Importar:**
+```typescript
+import { MyMap } from "@/components/ui/MyMap";
+```
+
+**Modo single (marcar un punto):**
+```typescript
+<MyMap
+  onChange={(lat, lon) => console.log(lat, lon)}
+/>
+```
+
+**Modo distance (medir distancia entre dos puntos):**
+```typescript
+<MyMap
+  mode="distance"
+  onDistance={(from, to, km) => {
+    console.log(`De ${from} a ${to}: ${km.toFixed(2)} km`);
+  }}
+/>
+```
+
+- 1er clic → coloca el punto **A** (verde)
+- 2do clic → coloca el punto **B** (rojo) + dibuja línea + calcula distancia
+- Clic siguiente → reinicia
+- El botón "Limpiar" también resetea los puntos
+- Distancias < 1 km se muestran en metros
+- La línea se re-dibuja automáticamente al hacer pan/zoom en el mapa
+
+---
+
 ## 5. Server Actions
 
 Las server actions van en `actions/actions.ts` con la directiva `"use server"` al inicio.
